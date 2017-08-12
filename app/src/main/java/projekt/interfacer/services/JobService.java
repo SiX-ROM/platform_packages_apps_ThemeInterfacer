@@ -885,6 +885,7 @@ public class JobService extends Service {
     @SuppressWarnings("ConstantConditions")
     private boolean isCallerAuthorized(int uid) {
         String callingPackage = getPackageManager().getPackagesForUid(uid)[0];
+        boolean isPermissionGranted = checkCallingPermission("projekt.interfacer.permission.ACCESS_SERVICE_INNER") == PackageManager.PERMISSION_GRANTED;
 
         for (String AUTHORIZED_CALLER : AUTHORIZED_CALLERS) {
             if (TextUtils.equals(callingPackage, AUTHORIZED_CALLER)) {
@@ -904,7 +905,7 @@ public class JobService extends Service {
             return true;
         }
 
-        if (mSigOverride) {
+        if (mSigOverride && isPermissionGranted) {
             log("\'" + callingPackage + "\' is not an authorized calling " +
                     "package, but the user has explicitly allowed all calling" +
                     " packages, validating calling package permissions...");

@@ -19,6 +19,12 @@
         android:label="@string/perm_access_label"
         android:protectionLevel="normal" />
 
+    <permission android:name="projekt.interfacer.permission.ACCESS_SERVICE_INNER"
+        android:permissionGroup="projekt.interfacer.permission-group.SERVICE"
+        android:description="@string/perm_group_inner_desc"
+        android:label="@string/perm_access_label"
+        android:protectionLevel="dangerous" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission
